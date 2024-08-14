@@ -24,7 +24,6 @@ public class Creature : MonoBehaviour
         }
     }
 
-
     void Start()
     {
         health = maxHealth;
@@ -92,5 +91,4 @@ public class Creature : MonoBehaviour
     {
         strength += points;
     }
-
 }

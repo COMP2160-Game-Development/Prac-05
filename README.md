@@ -4,14 +4,13 @@
 * UI Construction
 * TextMeshPro
 * C# Events for UI
-* Discussion: Accessibility
 
-## Discussion: Accessibility
-You are working as a project lead on a recently released third person action game. Most of the team has moved onto the next project, and you're left with a small budget and a skeleton crew to maintain and patch the game.
-
-Your community manager has reported that fans are complaining they can't tell different objects apart on screen, due to the muted colour-scheme that makes health packs, weapon pick-ups and other items blend-in with one another. Additionally, the game lacks any subtitles, which is preventing players with hearing impairments from playing the game. A junior programmer is enthusiastic about finding ways to solve this problem, and has raised suggestions such as colour-blind modes or different symbols for objects. Your art director has stated that any changes would ruin the game’s message and meaning, and interfere with the game’s core design.
-
-Your team is divided, and your resources are limited. As project lead, what do you do? Justify your decisions with reference to the ACS Code of Professional Ethics and keep your team and player base's wellbeing in mind.
+>## Discussion: Accessibility
+>You are working as a project lead on a recently released third person action game. Most of the team has moved onto the next project, and you're left with a small budget and a skeleton crew to maintain and patch the game.
+>
+>Your community manager has reported that fans are complaining they can't tell different objects apart on screen, due to the muted colour-scheme that makes health packs, weapon pick-ups and other items blend-in with one another. Additionally, the game lacks any subtitles, which is preventing players with hearing impairments from playing the game. A junior programmer is enthusiastic about finding ways to solve this problem, and has raised suggestions such as colour-blind modes or different symbols for objects. Your art director has stated that any changes would ruin the game’s message and meaning, and interfere with the game’s core design.
+>
+>Your team is divided, and your resources are limited. As project lead, what do you do? Justify your decisions with reference to the ACS Code of Professional Ethics and keep your team and player base's wellbeing in mind.
 
 ## Today's Task
 In this prac you will implement the UI for a simple RPG combat game: 
@@ -54,18 +53,16 @@ Change the Text Input to reflect the player's level, and make any changes to the
 Using these same techniques, add text to display Gold in the top Right corner of the screen.
 
 ## Step 3 - Adding an Action Panel
-
 We are now going to create a new panel at the bottom of our screen to handle Actions. Using the same techniques you used to create your Player Stats panel, create a new panel anchored to the bottom of the screen and stretching left-to-right. As this is the main area the player is going to be interacting with, you probably want it a bit bigger - I've set mine to have a height of 140.
 
 It would be very cumbersome to have to align each Action Panel button by hand. We can set our Panel to automatically organise its children objects based on a few parameters. Add the Horizontal Layout Group Component to the Actions Panel.
-### Adding the buttons
 
+### Adding the buttons
 Add four buttons to your Actions Panel (UI > Button - TextMeshPro). Name them appropriately and change their text to represent the Strike, Shield, Strengthen and Heal actions.
 
 Your buttons should automatically align themselves across the Actions Panel. Re-ordering them in the Heirarchy will change their order within the Panel. See [the Horizontal Layout Group documentation](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/script-HorizontalLayoutGroup.html) to tweak your layout and button placement.
 
 ### Actions left and End Turn Panel
-
 We're now going to add a slightly more complex UI element: the End Turn Button and an actions counter display. Create a Panel which is a child of the Actions panel, and resize/position it so it sits on the far right of the Actions Panel.
 
 For this sub-panel, we now want to add a Text element to display Actions Left, and a Button to allow the player to End their Turn. The finished result should look something like this:
@@ -74,16 +71,15 @@ For this sub-panel, we now want to add a Text element to display Actions Left, a
 
 Finish setting up your Action Panel. Keep the following tips in mind:
 
-* There is not always an exact Anchor Pre-set that will get you the result you want. You need to familarise yourself with the Rect Transform Component and the Horizontal Layout Component to get things looking how you want.
+There is not always an exact Anchor Pre-set that will get you the result you want. You need to familarise yourself with the Rect Transform Component and the Horizontal Layout Component to get things looking how you want.
 
-* Generally, keeping your numbers uniform and your margins consistent across all your UI elements will reduce technical debt and make for more predictable changes should you add more elements or change the screen size.
+Keeping your numbers uniform and your margins consistent across all your UI elements will reduce technical debt and make for more predictable changes should you add more elements or change the screen size.
 
 Check that your UI works for various resolutions by selecting different ratios and resizing the game view. Double-check you've set everything up in the [Canvas Scaler](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/script-CanvasScaler.html.) properly if things are looking a little strange.
 
 ### Checkpoint! Save, commit and push your work now.
 
 ## Step 4 – Hook up the UI to the Game Manager
-
 We want to use our UI buttons to call the methods on the GameManager. As shown in the lecture, you can achieve this through the inspector. However, it is a bit cleaner (and better for version control) to set this up through C#.
 
 Create a seperate UIManager class and place it on the Canvas. Using one of the methods covered last week, assign it the GameManager so it can send events and read properties.
@@ -142,12 +138,6 @@ strikeButton.interactable = false;
 
 ### Checkpoint! Save, commit and push your work now.
 
-## To receive half-marks for today, show your tutor:
-
-* Your UI at different resolutions.
-* Your buttons working, including the disabling of them at the end of a turn.
-* Your "actions remaining" text updating with each action.
-
 ## Step 5 – Create a creature UI
 We will use world-space canvases to display the stats for each creature above its head.
 
@@ -163,6 +153,11 @@ Add a health bar to the creature UI. Here are some tips to get you started:
 * Add an Image to the panel, anchored on the left-hand side.
 * Write code to change the width of the image corresponding the creature’s health as a fraction of its maximum. You can change this using the RectTransform class, using the [sizeDelta property](https://docs.unity3d.com/ScriptReference/RectTransform.html).
 
+### Prac Complete! To receive full marks for today, show your tutor:
+* Your UI and working buttons, working at different resolutions.
+* Your world space UIs showing creature stats.
+* Your working health bars.
+
 ### Null References Plugin (Optional)
 When our projects reach this level of complexity, null references become more common. These can be tricky to track down, especially as they often are only shown at run-time. Mootl has created a good Package for dealing with null reference exceptions, which you are free to use in all your projects for this unit. Check it out [here](https://github.com/Moolt/Unity-Null-Reference-Detection). 
 
@@ -170,9 +165,3 @@ When our projects reach this level of complexity, null references become more co
 
 ### Additional fonts (Optional)
 If you'd like, you can use different fonts for your different assets. We've provided you with two fonts in the template project inside the "Third Party Fonts" folder. To turn them into a Font Asset, right-click and select Create > TextMeshPro > Font Asset. You can download more fonts from [dafont.org](http://dafont.org/), but make sure they are public domain before using them!
-
-### Prac Complete! Save, commit and push your work now.
-
-## To receive full marks for today, show your tutor:
-* Your world space UIs showing creature stats.
-* Your working health bars.

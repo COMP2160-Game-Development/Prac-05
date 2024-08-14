@@ -16,12 +16,10 @@ public class GameManager : MonoBehaviour
     private int actionsRemaining;
 
     [SerializeField] private int baseStrikeDamage = 5;
-    [SerializeField] private int bonusStrikeDamage = 2;    
+    [SerializeField] private int bonusStrikeDamage = 2;
     [SerializeField] private int healAmount = 2;
     [SerializeField] private int shieldAmount = 4;
     [SerializeField] private int strengthenAmount = 1;
-
-
 
     void Start()
     {        
@@ -64,7 +62,6 @@ public class GameManager : MonoBehaviour
     {
         // broadcast to player and enemies
         player.EndTurn();
-
         // enemies attack the player
         for (int i = 0; i < enemies.Count; i++)
         {
@@ -72,7 +69,6 @@ public class GameManager : MonoBehaviour
             player.Hit(damage);
             enemies[i].EndTurn();
         }
-
         // start the next turn
         StartTurn();
     }
