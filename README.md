@@ -5,7 +5,7 @@
 * TextMeshPro
 * C# Events for UI
 
->## Discussion: Accessibility
+>## Discussion: Accessibility (15 min)
 >You are working as a project lead on a recently released third person action game. Most of the team has moved onto the next project, and you're left with a small budget and a skeleton crew to maintain and patch the game.
 >
 >Your community manager has reported that fans are complaining they can't tell different objects apart on screen, due to the muted colour-scheme that makes health packs, weapon pick-ups and other items blend-in with one another. Additionally, the game lacks any subtitles, which is preventing players with hearing impairments from playing the game. A junior programmer is enthusiastic about finding ways to solve this problem, and has raised suggestions such as colour-blind modes or different symbols for objects. Your art director has stated that any changes would ruin the game’s message and meaning, and interfere with the game’s core design.
@@ -21,7 +21,7 @@ Press the buttons in the panel at the bottom of the screen to act. You can perfo
 
 The base framework already implements the combat mechanics for you. The GameManager implements the available actions (```Strike```, ```Shield```, ```Strengthen``` and ```Heal```). The Creature class is used for both the player and the enemies, and keeps track of their respective health, shield and strength. 
 
-## Step 1 – Designing a UI
+## Step 1 – Designing a UI (15 min)
 We should <b>always</b> make sure to set our Aspect Ratio, but this is especially important when crafting a UI. Set your game's aspect ratio to something standard, like 16:9.
 
 Add a Canvas to your scene (GameObject > UI > Canvas). A Canvas is the bedrock of your UI, allowing you to add elements including text and buttons. We want our Canvas to change size based on the size of the screen. In the Inspector, set the Canvas's [Canvas Scaler](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/manual/script-CanvasScaler.html.) to "Scale With Screen Size".
@@ -40,8 +40,7 @@ The panel will default to taking up the entire screen. We know we want the Playe
 
 If you've set this correctly, you should be able to decrease the Height of the Panel and have it shrink but remain at the top of the screen. Set this number to something you deem appropriate, I've set mine to 50. You also might want to give a small amount of room for error by setting the Y position to -4, and the Left and Right values to 4 as well. It's up to you whether you want the Panel to be visible or not.
 
-## Step 2 - Adding Player Stats 
-
+## Step 2 - Adding Player Stats (20 min)
 We now want to add Text to diplay the Level and Gold stats for the player. To add the Level stat, right-click on PlayerStats and select UI > Text - TextMeshPro. If you are asked to Import TMP Essentials, do so. Rename the new Text object something meaningful.
 
 By default, your new Text asset will appear in the centre of the panel. We want it to sit to the far left, so change its pivot and position in its settings as before. Modify the Rect Transform values until it looks right to you. I also set my Horizontal alignment to Left, and my Vertical alignment to Middle, so it sits nicely in the centre of the panel.
@@ -52,7 +51,7 @@ Change the Text Input to reflect the player's level, and make any changes to the
 
 Using these same techniques, add text to display Gold in the top Right corner of the screen.
 
-## Step 3 - Adding an Action Panel
+## Step 3 - Adding an Action Panel (20 min)
 We are now going to create a new panel at the bottom of our screen to handle Actions. Using the same techniques you used to create your Player Stats panel, create a new panel anchored to the bottom of the screen and stretching left-to-right. As this is the main area the player is going to be interacting with, you probably want it a bit bigger - I've set mine to have a height of 140.
 
 It would be very cumbersome to have to align each Action Panel button by hand. We can set our Panel to automatically organise its children objects based on a few parameters. Add the Horizontal Layout Group Component to the Actions Panel.
@@ -79,7 +78,7 @@ Check that your UI works for various resolutions by selecting different ratios a
 
 ### Checkpoint! Save, commit and push your work now.
 
-## Step 4 – Hook up the UI to the Game Manager
+## Step 4 – Hook up the UI to the Game Manager (20 min)
 We want to use our UI buttons to call the methods on the GameManager. As shown in the lecture, you can achieve this through the inspector. However, it is a bit cleaner (and better for version control) to set this up through C#.
 
 Create a seperate UIManager class and place it on the Canvas. Using one of the methods covered last week, assign it the GameManager so it can send events and read properties.
@@ -138,7 +137,7 @@ strikeButton.interactable = false;
 
 ### Checkpoint! Save, commit and push your work now.
 
-## Step 5 – Create a creature UI
+## Step 5 – Create a creature UI (20 min)
 We will use world-space canvases to display the stats for each creature above its head.
 
 Create a screen-space canvas containing a panel and three text objects for health, shield and strength. It is easiest to design your layout in screen-space first then convert it to world-space.
@@ -147,17 +146,18 @@ Convert the canvas to world-space and use the Scale setting in the Rect Transfor
 
 Using what you've learnt write a CreatureUI script that reads the appropriate properties from the Creature and displays them. Add this to the player and to the Enemy prefab.
 
-## Step 6 – Create a health bar
+### Prac Complete! To receive full marks for today, show your tutor:
+* Your UI and working buttons, working at different resolutions.
+* Your world space UIs showing creature stats.
+
+## Bonus tasks
+
+### Create a health bar
 Add a health bar to the creature UI. Here are some tips to get you started:
 * Create a Panel to represent the background of the bar.
 * Add an Image to the panel, anchored on the left-hand side.
 * Write code to change the width of the image corresponding the creature’s health as a fraction of its maximum. You can change this using the RectTransform class, using the [sizeDelta property](https://docs.unity3d.com/ScriptReference/RectTransform.html).
-
-### Prac Complete! To receive full marks for today, show your tutor:
-* Your UI and working buttons, working at different resolutions.
-* Your world space UIs showing creature stats.
-* Your working health bars.
-
+* 
 ### Null References Plugin (Optional)
 When our projects reach this level of complexity, null references become more common. These can be tricky to track down, especially as they often are only shown at run-time. Mootl has created a good Package for dealing with null reference exceptions, which you are free to use in all your projects for this unit. Check it out [here](https://github.com/Moolt/Unity-Null-Reference-Detection). 
 
